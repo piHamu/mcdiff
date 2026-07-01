@@ -225,7 +225,7 @@ def read_Dradcoeffs(filename,final=False):
 
     return np.array(coeff)
 
-def read_dv_dw(filename,final=False):
+def read_dv_dw_dwrad(filename,final=False):
     startline = "----- Settings MC -----"
     if final: startline = "----- final Settings MC -----"
 
@@ -243,8 +243,12 @@ def read_dv_dw(filename,final=False):
                 words = line.split()
                 dw = float(words[1])
                 break
-    return dv,dw
-
+        for line in f:
+            if line.startswith("dwrad"):
+                words = line.split()
+                dwrad = float(words[1])
+                break
+    return dv,dw,dwrad
 
 #==============================
 # using loggers
