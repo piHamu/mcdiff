@@ -228,7 +228,9 @@ def read_Dradcoeffs(filename,final=False):
 def read_dv_dw_dwrad(filename,final=False):
     startline = "----- Settings MC -----"
     if final: startline = "----- final Settings MC -----"
-
+    dv = None
+    dw = None
+    dwrad = None
     with open(filename,"r") as f:
         for line in f:
             if line.startswith(startline):
